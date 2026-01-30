@@ -18,23 +18,7 @@ namespace Unity.FPS.UI
 
         Jetpack m_Jetpack;
 
-        void Awake()
-        {
-            m_Jetpack = FindFirstObjectByType<Jetpack>();
-            DebugUtility.HandleErrorIfNullFindObject<Jetpack, JetpackCounter>(m_Jetpack, this);
 
-            FillBarColorChange.Initialize(1f, 0f);
-        }
 
-        void Update()
-        {
-            MainCanvasGroup.gameObject.SetActive(m_Jetpack.IsJetpackUnlocked);
-
-            if (m_Jetpack.IsJetpackUnlocked)
-            {
-                JetpackFillImage.fillAmount = m_Jetpack.CurrentFillRatio;
-                FillBarColorChange.UpdateVisual(m_Jetpack.CurrentFillRatio);
-            }
-        }
     }
 }

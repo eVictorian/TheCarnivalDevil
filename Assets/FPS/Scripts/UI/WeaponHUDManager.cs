@@ -33,9 +33,6 @@ namespace Unity.FPS.UI
 
         void AddWeapon(WeaponController newWeapon, int weaponIndex)
         {
-            GameObject ammoCounterInstance = Instantiate(AmmoCounterPrefab, AmmoPanel);
-
-
 
         }
     }
