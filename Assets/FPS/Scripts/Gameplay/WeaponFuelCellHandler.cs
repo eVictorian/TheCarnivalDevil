@@ -23,43 +23,11 @@ namespace Unity.FPS.Gameplay
 
         void Start()
         {
-            m_Weapon = GetComponent<WeaponController>();
-            DebugUtility.HandleErrorIfNullGetComponent<WeaponController, WeaponFuelCellHandler>(m_Weapon, this,
-                gameObject);
-
-            m_FuelCellsCooled = new bool[FuelCells.Length];
-            for (int i = 0; i < m_FuelCellsCooled.Length; i++)
-            {
-                m_FuelCellsCooled[i] = true;
-            }
         }
 
         void Update()
         {
-            if (SimultaneousFuelCellsUsage)
-            {
-                for (int i = 0; i < FuelCells.Length; i++)
-                {
-                    FuelCells[i].transform.localPosition = Vector3.Lerp(FuelCellUsedPosition, FuelCellUnusedPosition,
-                        m_Weapon.CurrentAmmoRatio);
-                }
-            }
-            else
-            {
-                // TODO: needs simplification
-                for (int i = 0; i < FuelCells.Length; i++)
-                {
-                    float length = FuelCells.Length;
-                    float lim1 = i / length;
-                    float lim2 = (i + 1) / length;
 
-                    float value = Mathf.InverseLerp(lim1, lim2, m_Weapon.CurrentAmmoRatio);
-                    value = Mathf.Clamp01(value);
-
-                    FuelCells[i].transform.localPosition =
-                        Vector3.Lerp(FuelCellUsedPosition, FuelCellUnusedPosition, value);
-                }
-            }
         }
     }
 }

@@ -129,10 +129,9 @@ namespace Unity.FPS.Gameplay
 
             if (activeWeapon != null && m_WeaponSwitchState == WeaponSwitchState.Up)
             {
-                if (!activeWeapon.AutomaticReload && m_InputHandler.GetReloadButtonDown() && activeWeapon.CurrentAmmoRatio < 1.0f)
+                if (!activeWeapon.AutomaticReload && m_InputHandler.GetReloadButtonDown())
                 {
                     IsAiming = false;
-                    activeWeapon.StartReloadAnimation();
                     return;
                 }
                 // handle aiming down sights
