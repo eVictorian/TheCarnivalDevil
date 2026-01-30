@@ -1,0 +1,1 @@
+public class ENTITY_Player : ENTITY {}
