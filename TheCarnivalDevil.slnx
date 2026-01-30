@@ -1,0 +1,14 @@
+﻿<Solution>
+  <Project Path="NaughtyAttributes.Test.csproj" />
+  <Project Path="fps.UI.csproj" />
+  <Project Path="fps.Game.csproj" />
+  <Project Path="NaughtyAttributes.Core.csproj" />
+  <Project Path="NaughtyAttributes.Editor.csproj" />
+  <Project Path="Unity.Microgame.Tutorials.csproj" />
+  <Project Path="NavMeshComponents.csproj" />
+  <Project Path="fps.AI.csproj" />
+  <Project Path="fps.Gameplay.csproj" />
+  <Project Path="Unity.FPS.Tutorials.csproj" />
+  <Project Path="NavMeshComponentsEditor.csproj" />
+  <Project Path="fps.Editor.csproj" />
+</Solution>
