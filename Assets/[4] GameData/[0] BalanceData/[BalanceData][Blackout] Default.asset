@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: '[BalanceData][Blackout] Default'
   m_EditorClassIdentifier: 
   RULE_WhiteoutDuration: 60
-  RULE_BlackoutDuration: 5
+  RULE_BlackoutDuration: 2

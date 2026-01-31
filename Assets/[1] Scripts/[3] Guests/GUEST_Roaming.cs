@@ -6,11 +6,14 @@ using UnityEngine.AI;
 
 public class GUEST_Roaming : MonoBehaviour
 {
+    public bool debug = false;
+
     [SerializeField] private NavMeshAgent nmAgent;
 
     [SerializeField] private List<Waypoint> waypoints = new List<Waypoint>();
+    [Button] void AddAllWaypointsToList(){ waypoints.Clear(); foreach (Waypoint waypoint in FindObjectsByType<Waypoint>(0)){ waypoints.Add(waypoint); } }
 
-    [SerializeField] private BALANCEDATA_GUEST_Roaming data;
+    [SerializeField, Expandable] private BALANCEDATA_GUEST_Roaming data;
 
     [SerializeField] soDATA_GameEvent blackoutStarted;
     [SerializeField] soDATA_GameEvent blackoutEnded;
@@ -19,6 +22,8 @@ public class GUEST_Roaming : MonoBehaviour
 
     [SerializeField, ReadOnly] private RoamBehaviour currentBehaviour;
     [SerializeField, ReadOnly] private Waypoint currentRoamingPoint;
+
+    private Coroutine waitingAtRoamPointCoroutineInstance;
 
     void Awake(){ Setup(); }
     void Setup()
@@ -38,11 +43,31 @@ public class GUEST_Roaming : MonoBehaviour
 
     void ChooseNextRoamPoint(){ currentRoamingPoint = waypoints[Random.Range(0,waypoints.Count)]; }
 
-    void StopMoving(){ currentBehaviour = RoamBehaviour.Stopped; }
+    public void Stop(){ StopMoving(); }
+    void StopMoving()
+    {
+        if (waitingAtRoamPointCoroutineInstance != null){ StopCoroutine(waitingAtRoamPointCoroutineInstance); }
 
+        nmAgent.SetDestination(transform.position);
+        currentBehaviour = RoamBehaviour.Stopped;
+    }
+
+    public void Start(){ StartMoving(); }
     void StartMoving(){ nmAgent.SetDestination(currentRoamingPoint.transform.position); currentBehaviour = RoamBehaviour.Travelling; }
 
-    void ReachedRoamPointCheck(){ if (true){ StartCoroutine(WaitingAtRoamPoint()); }}
+    void ReachedRoamPointCheck(){ if (ReachedDestination()){ waitingAtRoamPointCoroutineInstance = StartCoroutine(WaitingAtRoamPointCoroutine()); }}
+        bool ReachedDestination()
+        {
+            if (!nmAgent.pathPending)
+            {
+                if (nmAgent.remainingDistance <= nmAgent.stoppingDistance)
+                {
+                    if (!nmAgent.hasPath || nmAgent.velocity.sqrMagnitude == 0f)
+                        return true;
+                }
+            }
+            return false;
+        }
 
     void Update()
     {
@@ -60,14 +85,18 @@ public class GUEST_Roaming : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitingAtRoamPoint()
+    private IEnumerator WaitingAtRoamPointCoroutine()
     {
         currentBehaviour = RoamBehaviour.Waiting;
 
-        yield return new WaitForSeconds(Random.Range(data.RULE_WaitTimeRange.x,data.RULE_WaitTimeRange.y));
+        float randomWaitTime = Random.Range(data.RULE_WaitTimeRange.x,data.RULE_WaitTimeRange.y);
+            if (debug){ Debug.Log(randomWaitTime); }
+        yield return new WaitForSeconds(randomWaitTime);
 
         ChooseNextRoamPoint();
         StartMoving();
+
+        waitingAtRoamPointCoroutineInstance = null;
     }
 }
 

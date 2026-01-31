@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8212445042699369512}
   - component: {fileID: 6590473881987217494}
   - component: {fileID: 1099810909053385183}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: '[Room] RoomTemplate'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9606ebf29f6ec443ba0ffb645c70bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debug: 1
+  debug: 0
   bounds: {fileID: 1099810909053385183}
   UNITYINSPECTOR_Occupants: []
 --- !u!65 &1099810909053385183
@@ -63,7 +63,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3

@@ -6,5 +6,5 @@ using NaughtyAttributes;
 [CreateAssetMenu(fileName = "[BalanceData][Guest][Roaming] New", menuName = "Balance Data/++GUESTROAMING")]
 public class BALANCEDATA_GUEST_Roaming : ScriptableObject
 {
-    [Label("Random Wait Time Range"), MinMaxSlider(5,60)] public Vector2 RULE_WaitTimeRange;
+    [Label("Random Wait Time Range"), MinMaxSlider(0,10)] public Vector2 RULE_WaitTimeRange;
 }

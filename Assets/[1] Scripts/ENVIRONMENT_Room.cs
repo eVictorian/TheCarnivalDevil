@@ -26,7 +26,7 @@ public class ENVIRONMENT_Room : MonoBehaviour
     #endif
 
     //Runs for objects already colliding on Awake
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
         if (debug){ Debug.Log(collision.gameObject.name); }
         
@@ -39,7 +39,7 @@ public class ENVIRONMENT_Room : MonoBehaviour
         AddOccupant(collidedEntity);
     }
 
-    void OnCollisionExit(Collision collision)
+    void OnTriggerExit(Collider collision)
     {
         if (debug){ Debug.Log(collision.gameObject.name); }
 

@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &681729619139794466
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1479376626369252470, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_Name
+      value: '[Creature] Mask Mesh [Collider]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088877866534199966, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: waypoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2749707297172482913, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_Name
+      value: '[Creature] Mesh [Mesh Renderer]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3901800604132303855, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_Name
+      value: '[Creature] Entity'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5872324350446222988, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_Name
+      value: '[Creature] Mask Pivot'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250375088113635824, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250375088113635824, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250375088113635824, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250375088113635824, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250375088113635824, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250375088113635824, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250375088113635824, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250375088113635824, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250375088113635824, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7250375088113635824, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7340819986218794894, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7090407b9165f9d439760fa74c15c761, type: 2}
+    - target: {fileID: 7590289193260377007, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_Name
+      value: '[Creature] TheCreature [Root, NavMeshAgent]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8629013453505116250, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_Name
+      value: '[Creature] Imitate Player Greeting'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8769498672821108273, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_Name
+      value: '[Creature] Mask'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9167378133052394129, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: m_Name
+      value: '[Creature] Mesh Common Transform [Parent{Mesh,Mask}]'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 73edb3d8d42cec7488580960a85bb11f, type: 3}
