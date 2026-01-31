@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d5e9ff189414744979b0c0c98fb7b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   onMaskUpGameEvent: {fileID: 11400000, guid: 36fe0f9bd40d1324d9fda24badc4cb32, type: 2}
   maskUpTime: 8
   transitionDuration: 2
@@ -551,6 +552,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Proxy][Guest] Entity [Mesh, Entity]'
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de55ba3a0e0163c4cb6b6b0f18102d9d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -563,6 +569,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6135014837004824997}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: de55ba3a0e0163c4cb6b6b0f18102d9d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1305253736545019860}
   m_SourcePrefab: {fileID: 100100000, guid: de55ba3a0e0163c4cb6b6b0f18102d9d, type: 3}
 --- !u!4 &15642127701060922 stripped
 Transform:
@@ -625,6 +635,33 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: de55ba3a0e0163c4cb6b6b0f18102d9d, type: 3}
+--- !u!54 &1305253736545019860
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827609833385981824}
+  serializedVersion: 4
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2569329372748081611
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -687,6 +724,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Proxy][Mask]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 24fdc092cf364554bb7d75ad4272a8cd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

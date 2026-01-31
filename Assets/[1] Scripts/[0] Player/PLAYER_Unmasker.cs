@@ -23,10 +23,10 @@ public class PLAYER_Unmasker : MonoBehaviour
         {
             if (!hit.collider.CompareTag("Mask")){ return; }
 
-            
+
 
             if (remainingGuesses <= 0){}
-            else if (Mouse.current.leftButton.wasPressedThisFrame){ remainingGuesses--; hit.collider.gameObject.GetComponent<GUEST_Mask>().UnMask(); }
+            else if (Mouse.current.leftButton.wasPressedThisFrame){ hit.collider.gameObject.GetComponent<GUEST_Mask>().UnMask(); }
         }
     }
 }

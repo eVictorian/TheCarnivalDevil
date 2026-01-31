@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GUEST_Mask : MonoBehaviour
 {
-    //Only 1 Mask up at a time!
-    public static bool isBusy {private set; get;} = false;
+    public bool debug = false;
+    public bool isBusy {private set; get;} = false;
     bool interactable = true;
 
     [Space(10)]
@@ -16,22 +16,25 @@ public class GUEST_Mask : MonoBehaviour
 
     [SerializeField, Range(0,10)] private float maskUpTime;
     [SerializeField, Range(0,10)] private float transitionDuration;
-    [SerializeField] private AnimationCurve transitionSpeedCurve;
+    [SerializeField] private AnimationCurve transitionSpeedCurve = new AnimationCurve();
+    [Button] void DEBUGResetTransitionCurve(){ transitionSpeedCurve = new AnimationCurve(); }
 
     [Space(10)]
 
     [SerializeField] private Quaternion pivotRotationMaskUp;
-    [Button] void SetMaskUpRotationToCurrentRotation(){ pivotRotationMaskUp = pivot.localRotation; }
+    [Button] void SetMaskUpRotationToCurrentRotation(){ pivotRotationMaskUp = Quaternion.Normalize(pivot.localRotation); }
     [SerializeField] private Quaternion pivotRotationMaskDown;
-    [Button] void SetMaskDownRotationToCurrentRotation(){ pivotRotationMaskDown = pivot.localRotation; }
+    [Button] void SetMaskDownRotationToCurrentRotation(){ pivotRotationMaskDown = Quaternion.Normalize(pivot.localRotation); }
 
     [Space(10)]
 
     [SerializeField] private Transform pivot;
     [SerializeField] private ENTITY entity;
 
+    private static Coroutine activeCoroutine;
+
     public void UnMask(){ if (interactable) MaskUp(); }
-    [Button] void MaskUp(){ if (isBusy){ return; } StartCoroutine(MaskUpCoroutine()); }
+    [Button] void MaskUp(){ if (isBusy){ return; } activeCoroutine = StartCoroutine(MaskUpCoroutine()); }
     private IEnumerator MaskUpCoroutine()
     {
         isBusy = true;
@@ -63,23 +66,38 @@ public class GUEST_Mask : MonoBehaviour
         MaskDown();
     }
 
-    [Button] void MaskDown(){ if (isBusy){ return; } StartCoroutine(MaskDownCoroutine()); }
+    [Button] void MaskDown(){ if (isBusy){ return; } activeCoroutine = StartCoroutine(MaskDownCoroutine()); }
     private IEnumerator MaskDownCoroutine()
     {
+            if (debug){ Debug.Log("prmu" + pivotRotationMaskUp); }
+            if (debug){ Debug.Log("prmd" + pivotRotationMaskDown); }
+            if (debug){ Debug.Log("current" + pivot.transform.localRotation); }
+
         isBusy = true;
 
         float timer = 0f;
-        Quaternion startRot = pivot.localRotation;
+        Quaternion startRot = pivotRotationMaskUp;
+
+            if (debug){ Debug.Log("A" + startRot); }
+            if (debug){ Debug.Log("to B" + pivotRotationMaskDown); }
+            if (debug){ Debug.Log("over: " + transitionDuration); }
 
         while (timer < transitionDuration)
         {
             timer += Time.deltaTime;
-            float t = timer / transitionDuration;
+
+            float t = Mathf.Clamp01(timer / transitionDuration);
 
             // Apply animation curve
             float curvedT = transitionSpeedCurve.Evaluate(t);
 
-            pivot.localRotation = Quaternion.Lerp(startRot, pivotRotationMaskDown, curvedT);
+                if (debug){ Debug.Log(curvedT); }
+
+            Quaternion newRotation = Quaternion.Lerp(startRot, pivotRotationMaskDown, curvedT);
+            
+                if (debug){ Debug.Log(newRotation); }
+
+            pivot.localRotation = newRotation;
 
             yield return null;
         }
