@@ -35,7 +35,7 @@ public class GUEST_Roaming : MonoBehaviour
         if (nmAgent == null){ Debug.Log("No Navmesh Agent found at: " + name); }
 
         blackoutStarted.RegisterListener(StopMoving);
-        blackoutEnded.RegisterListener(StartMoving);
+        blackoutEnded.RegisterListener(BlackoutResumeMoving);
 
         ChooseNextRoamPoint();
         StartMoving();
@@ -56,7 +56,15 @@ public class GUEST_Roaming : MonoBehaviour
     }
 
     public void Start(){ StartMoving(); }
-    void StartMoving(){ nmAgent.SetDestination(currentRoamingPoint.transform.position); currentBehaviour = RoamBehaviour.Travelling; }
+    void BlackoutResumeMoving(){ StartMoving(true); }
+    void StartMoving(bool blackoutSource = false)
+    {
+        if (blackoutSource && (currentBehaviour == RoamBehaviour.Stopped)){ return; }
+
+        nmAgent.SetDestination(currentRoamingPoint.transform.position); 
+        
+        currentBehaviour = RoamBehaviour.Travelling;
+    }
 
     void ReachedRoamPointCheck(){ if (ReachedDestination()){ waitingAtRoamPointCoroutineInstance = StartCoroutine(WaitingAtRoamPointCoroutine()); }}
         bool ReachedDestination()
@@ -105,7 +113,7 @@ public class GUEST_Roaming : MonoBehaviour
     void OnDestroy()
     {
         blackoutStarted.UnregisterListener(StopMoving);
-        blackoutEnded.UnregisterListener(StartMoving);
+        blackoutEnded.UnregisterListener(BlackoutResumeMoving);
     }
 }
 
