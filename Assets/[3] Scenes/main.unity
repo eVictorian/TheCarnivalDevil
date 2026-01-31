@@ -993,6 +993,12 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &354310045 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7590289193260377007, guid: 73edb3d8d42cec7488580960a85bb11f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3514711507579519946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &436463737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1341,6 +1347,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3514711507579519946}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &600007789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354310045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c855aa3d51051749819bd99a71acf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &607385068
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,7 +1707,7 @@ GameObject:
   - component: {fileID: 701884110}
   m_Layer: 0
   m_Name: -Audio Manager-
-  m_TagString: Untagged
+  m_TagString: AudioManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1706,6 +1724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a344c1db2fadbf848928b8855a93ec12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScreamAudio: {fileID: 6031146831596732352, guid: 604f818768555694ca84c241b7fda076,
+    type: 3}
 --- !u!4 &701884111
 Transform:
   m_ObjectHideFlags: 0
@@ -3841,7 +3861,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7590289193260377007, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 600007789}
   m_SourcePrefab: {fileID: 100100000, guid: 73edb3d8d42cec7488580960a85bb11f, type: 3}
 --- !u!23 &4403534896776364310
 MeshRenderer:
