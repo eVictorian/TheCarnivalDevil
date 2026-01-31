@@ -37,6 +37,7 @@ public class GUEST_Mask : MonoBehaviour
     [Button] void MaskUp(){ if (isBusy){ return; } activeCoroutine = StartCoroutine(MaskUpCoroutine()); }
     private IEnumerator MaskUpCoroutine()
     {
+        ENVIRONMENT_Blackouts.PauseTimer();
         isBusy = true;
 
         float timer = 0f;
@@ -63,6 +64,7 @@ public class GUEST_Mask : MonoBehaviour
         yield return new WaitForSeconds(maskUpTime);
 
         isBusy = false;
+        ENVIRONMENT_Blackouts.UnPauseTimer();
         MaskDown();
     }
 
@@ -104,6 +106,7 @@ public class GUEST_Mask : MonoBehaviour
 
         pivot.localRotation = pivotRotationMaskDown;
 
+        isBusy = false;
         interactable = true;
     }
 }

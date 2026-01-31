@@ -15,6 +15,8 @@ public class GUEST_GreetPlayer : MonoBehaviour
     [SerializeField] private UnityEvent onPlayerLeaves;
 
     private Vector3 playerPosition;
+
+    public bool playerNear {private set; get;}
     
     void OnTriggerEnter(Collider colliding)
     {
@@ -22,8 +24,10 @@ public class GUEST_GreetPlayer : MonoBehaviour
 
         UpdatePlayerPosition(colliding.gameObject);
 
-        onPlayerApproaches.Invoke();
         LookAtPlayer();
+        playerNear = true;
+
+        onPlayerApproaches.Invoke();
     }
     void OnTriggerStay(Collider colliding)
     {
@@ -37,6 +41,8 @@ public class GUEST_GreetPlayer : MonoBehaviour
     {
         if (colliding.tag != "Player"){ return; }
 
+        playerNear = false;
+        
         onPlayerLeaves.Invoke();
     }
 

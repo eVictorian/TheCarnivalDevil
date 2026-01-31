@@ -4,6 +4,8 @@ using NaughtyAttributes;
 
 public class ENVIRONMENT_Blackouts : MonoBehaviour
 {
+    private static ENVIRONMENT_Blackouts instance;
+
     [SerializeField] private soDATA_GameEvent blackoutStartGameEvent;
     [SerializeField] private soDATA_GameEvent blackoutEndGameEvent;
 
@@ -18,6 +20,10 @@ public class ENVIRONMENT_Blackouts : MonoBehaviour
 
     private static bool paused = false;
 
+    private static Coroutine blackoutCoroutine;
+
+    private BlackoutState blackoutState = BlackoutState.Whiteout;
+
     [Space(10)]
 
     [ReadOnly] public float timeUntilNextBlackout;
@@ -27,6 +33,8 @@ public class ENVIRONMENT_Blackouts : MonoBehaviour
     [Button]
     void Setup()
     {
+        instance = this;
+
         if (data == null){ return; }
 
         blackoutDuration = data.RULE_BlackoutDuration;
@@ -37,26 +45,35 @@ public class ENVIRONMENT_Blackouts : MonoBehaviour
 
     void Update(){ timeUntilNextBlackout = whiteoutDuration - timer; if (!paused){ timer += Time.deltaTime; }}
 
-    public static void PauseTimer(){ paused = true; }
-    public static void UnPauseTimer(){ paused = false; }
+    public static void PauseTimer(){ if (instance.blackoutState == BlackoutState.Blackout){ instance.BlackoutEnded(); } instance.StopCoroutine(blackoutCoroutine); instance.ResetTimer(); paused = true; }
+    public static void UnPauseTimer(){ paused = false; instance.StartBlackoutLoop(); }
 
     void BlackoutStarted(){ blackoutStartGameEvent.Raise(); }
     void BlackoutEnded(){ blackoutEndGameEvent.Raise(); }
 
-    void StartBlackoutLoop(){ StartCoroutine("BlackoutLoop"); }
+    void StartBlackoutLoop(){ blackoutCoroutine = StartCoroutine(BlackoutLoop()); }
 
     private IEnumerator BlackoutLoop()
     {
         yield return new WaitForSeconds(whiteoutDuration);
 
         BlackoutStarted();
+        blackoutState = BlackoutState.Blackout;
+
         yield return new WaitForSeconds(blackoutDuration);
+
         BlackoutEnded();
+        blackoutState = BlackoutState.Whiteout;
+        ResetTimer();
 
         StartBlackoutLoop();
-
-        ResetTimer();
     }
 
     void ResetTimer(){ timer = 0; }
+}
+
+enum BlackoutState
+{
+    Blackout,
+    Whiteout
 }

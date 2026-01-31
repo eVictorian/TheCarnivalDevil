@@ -10,6 +10,7 @@ public class GUEST_Roaming : MonoBehaviour
     public bool addAllWaypointsOnAwake = true;
 
     [SerializeField] private NavMeshAgent nmAgent;
+    [SerializeField] private GUEST_GreetPlayer greeter;
 
     [SerializeField] private List<Waypoint> waypoints = new List<Waypoint>();
     [Button] void AddAllWaypointsToList(){ waypoints.Clear(); foreach (Waypoint waypoint in FindObjectsByType<Waypoint>(0)){ waypoints.Add(waypoint); } }
@@ -59,7 +60,7 @@ public class GUEST_Roaming : MonoBehaviour
     void BlackoutResumeMoving(){ StartMoving(true); }
     void StartMoving(bool blackoutSource = false)
     {
-        if (blackoutSource && (currentBehaviour == RoamBehaviour.Stopped)){ return; }
+        if (blackoutSource && greeter.playerNear ){ return; }
 
         nmAgent.SetDestination(currentRoamingPoint.transform.position); 
         
