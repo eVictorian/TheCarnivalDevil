@@ -19,6 +19,7 @@ public class UX_GuessedWrong : MonoBehaviour
 
     private IEnumerator GuessedWrongCoroutine()
     {
+            if (counter > creaturePositions.Count-1){ counter = 0; }
         creature.localPosition = creaturePositions[counter];
         counter++;
 

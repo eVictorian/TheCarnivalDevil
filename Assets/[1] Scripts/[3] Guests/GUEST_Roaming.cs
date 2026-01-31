@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class GUEST_Roaming : MonoBehaviour
 {
     public bool debug = false;
+    public bool addAllWaypointsOnAwake = true;
 
     [SerializeField] private NavMeshAgent nmAgent;
 
@@ -28,6 +29,8 @@ public class GUEST_Roaming : MonoBehaviour
     void Awake(){ Setup(); }
     void Setup()
     {
+        if (addAllWaypointsOnAwake){ AddAllWaypointsToList(); }
+
         if (nmAgent == null){ nmAgent.GetComponent<NavMeshAgent>(); }
         if (nmAgent == null){ Debug.Log("No Navmesh Agent found at: " + name); }
 
