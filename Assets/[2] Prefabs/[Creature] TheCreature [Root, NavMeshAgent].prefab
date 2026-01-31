@@ -13,6 +13,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Creature] Mask Mesh [Collider]'
       objectReference: {fileID: 0}
+    - target: {fileID: 1624546067785224721, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: entity
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1624546067785224721, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: onMaskUpGameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 49bf69357c1ed9547bd2d4b308c18a36,
+        type: 2}
     - target: {fileID: 2088877866534199966, guid: 73edb3d8d42cec7488580960a85bb11f,
         type: 3}
       propertyPath: waypoints.Array.size
@@ -22,6 +33,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '[Creature] Mesh [Mesh Renderer]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3208770184135739159, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: trigger
+      value: 
+      objectReference: {fileID: 11400000, guid: 49bf69357c1ed9547bd2d4b308c18a36,
+        type: 2}
+    - target: {fileID: 3208770184135739159, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      propertyPath: effect.m_PersistentCalls.m_Calls.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3901800604132303855, guid: 73edb3d8d42cec7488580960a85bb11f,
         type: 3}
@@ -108,8 +130,59 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Creature] Mesh Common Transform [Parent{Mesh,Mask}]'
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8162174970226409798, guid: 73edb3d8d42cec7488580960a85bb11f, type: 3}
+    - {fileID: 1598801460676464713, guid: 73edb3d8d42cec7488580960a85bb11f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7590289193260377007, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 8120715090066133320}
+    - targetCorrespondingSourceObject: {fileID: 3901800604132303855, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1182692376066239340}
   m_SourcePrefab: {fileID: 100100000, guid: 73edb3d8d42cec7488580960a85bb11f, type: 3}
+--- !u!1 &4562154669199422925 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3901800604132303855, guid: 73edb3d8d42cec7488580960a85bb11f,
+    type: 3}
+  m_PrefabInstance: {fileID: 681729619139794466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1182692376066239340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4562154669199422925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b2bf8f70445014ab2194375676ec6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!1 &6927629916283729293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7590289193260377007, guid: 73edb3d8d42cec7488580960a85bb11f,
+    type: 3}
+  m_PrefabInstance: {fileID: 681729619139794466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8120715090066133320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927629916283729293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd0fa22fd648cba4cbc3a9f1243f0c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blackoutStartedGameEvent: {fileID: 11400000, guid: aeebb6942ec0bb748b67666bbdb0bdfc,
+    type: 2}

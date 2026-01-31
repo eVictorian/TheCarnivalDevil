@@ -9,6 +9,10 @@ public class PLAYER_Unmasker : MonoBehaviour
 
     [SerializeField] Camera myCamera;
 
+    [Space(10)]
+
+    public int remainingGuesses = 3;
+
     void Awake(){ if (myCamera == null) myCamera = FindFirstObjectByType<Camera>(); }
 
     void Update()
@@ -17,12 +21,12 @@ public class PLAYER_Unmasker : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, maxUnmaskingDistance))
         {
-            if (!hit.collider.CompareTag("Mask"))
-            {
-                return;
-            }
+            if (!hit.collider.CompareTag("Mask")){ return; }
 
-            if (Mouse.current.leftButton.wasPressedThisFrame){ hit.collider.gameObject.GetComponent<GUEST_Mask>().UnMask(); }
+
+
+            if (remainingGuesses <= 0){}
+            else if (Mouse.current.leftButton.wasPressedThisFrame){ remainingGuesses--; hit.collider.gameObject.GetComponent<GUEST_Mask>().UnMask(); }
         }
     }
 }

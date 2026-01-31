@@ -6,6 +6,7 @@ public class GUEST_Mask : MonoBehaviour
 {
     //Only 1 Mask up at a time!
     public static bool isBusy {private set; get;} = false;
+    bool interactable = true;
 
     [Space(10)]
 
@@ -29,8 +30,8 @@ public class GUEST_Mask : MonoBehaviour
     [SerializeField] private Transform pivot;
     [SerializeField] private ENTITY entity;
 
-    public void UnMask(){ MaskUp(); }
-    [Button] public void MaskUp(){ if (isBusy){ return; } StartCoroutine(MaskUpCoroutine()); }
+    public void UnMask(){ if (interactable) MaskUp(); }
+    [Button] void MaskUp(){ if (isBusy){ return; } StartCoroutine(MaskUpCoroutine()); }
     private IEnumerator MaskUpCoroutine()
     {
         isBusy = true;
@@ -54,11 +55,15 @@ public class GUEST_Mask : MonoBehaviour
         pivot.localRotation = pivotRotationMaskUp;
 
         onMaskUpGameEvent.Raise(entity.gameObject);
+        interactable = false;
         
         yield return new WaitForSeconds(maskUpTime);
+
+        isBusy = false;
+        MaskDown();
     }
 
-    [Button] public void MaskDown(){ if (isBusy){ return; } StartCoroutine(MaskDownCoroutine()); }
+    [Button] void MaskDown(){ if (isBusy){ return; } StartCoroutine(MaskDownCoroutine()); }
     private IEnumerator MaskDownCoroutine()
     {
         isBusy = true;
@@ -80,5 +85,7 @@ public class GUEST_Mask : MonoBehaviour
         }
 
         pivot.localRotation = pivotRotationMaskDown;
+
+        interactable = true;
     }
 }

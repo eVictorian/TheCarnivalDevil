@@ -59,6 +59,8 @@ public class ENVIRONMENT_Room : MonoBehaviour
         if (debug){ Debug.Log("New Occupant in Room: " + newOccupant.name); }
     }
 
+    public List<ENTITY> GetOccupants(){ return new List<ENTITY>(occupants); }
+
 
 
     //Clean Up
