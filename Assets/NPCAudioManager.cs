@@ -7,7 +7,6 @@ public class NPCAudioManager : MonoBehaviour
     void Start()
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
-        OnDeath();
     }
 
     // Update is called once per frame
