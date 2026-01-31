@@ -2,20 +2,24 @@ using UnityEngine;
 
 public class NPCAudioManager : MonoBehaviour
 {
-    AudioManager audioManager;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private soDATA_GameEvent onDeathGameEvent;
+    
+    private AudioManager audioManager;
+
+    void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        onDeathGameEvent.RegisterListener(OnDeath);
     }
     
     public void OnDeath()
     {
-        audioManager.Scream(gameObject.transform.position);
+        audioManager.Scream(transform.position);
+    }
+
+    void OnDestroy()
+    {
+        onDeathGameEvent.UnregisterListener(OnDeath);
     }
 }
