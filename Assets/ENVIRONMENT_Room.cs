@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class ENVIRONMENT_Room : MonoBehaviour
 {
-    public bool debug;
+    public bool debug = false;
 
     public static List<ENVIRONMENT_Room> allRooms = new List<ENVIRONMENT_Room>();
     
-    [SerializeField] private BoxCollider bounds;
+    [SerializeField] private Collider bounds;
 
     private List<ENTITY> occupants = new List<ENTITY>();
     [SerializeField, ReadOnly, Label("Occupants")] private List<ENTITY> UNITYINSPECTOR_Occupants;
@@ -19,43 +19,21 @@ public class ENVIRONMENT_Room : MonoBehaviour
     {
         //Update List of all Rooms
         if (!allRooms.Contains(this)) allRooms.Add(this);
-
-        //Check for Starting Occupants
-        ForceUpdateOccupants();
     }
 
-    void ForceUpdateOccupants()
-    {
-        Vector3 worldCenter = bounds.transform.TransformPoint(bounds.center);
-        Vector3 halfExtents = bounds.size * 0.5f;
-
-        Collider[] hits = Physics.OverlapBox(
-            worldCenter,
-            halfExtents,
-            bounds.transform.rotation,
-            ~0, // all layers
-            QueryTriggerInteraction.Collide
-        );
-
-        foreach (var hit in hits)
-        {
-            if (hit != bounds) // ignore self
-                Debug.Log("Starts inside: " + hit.name);
-
-                if (hit.GetComponentInParent<ENTITY>() != null){ AddOccupant(hit.GetComponentInParent<ENTITY>()); }
-                if (hit.GetComponent<ENTITY>() != null){ AddOccupant(hit.GetComponentInParent<ENTITY>()); }
-        }
-    }
-
+    #if UNITY_EDITOR
     void Update(){ UNITYINSPECTOR_Occupants = new List<ENTITY>(occupants); }
+    #endif
 
+    //Runs for objects already colliding on Awake
     void OnCollisionEnter(Collision collision)
     {
         if (debug){ Debug.Log(collision.gameObject.name); }
         
-        ENTITY collidedEntity = collision.gameObject.GetComponentInParent<ENTITY>();
-
+        ENTITY collidedEntity = collision.gameObject.GetComponent<ENTITY>();
+            if (debug){ Debug.Log("1"); }
         if (collidedEntity == null){ return; }
+            if (debug){ Debug.Log("2"); }
 
         collidedEntity.UpdateLocation(this);
         AddOccupant(collidedEntity);
@@ -66,7 +44,6 @@ public class ENVIRONMENT_Room : MonoBehaviour
         if (debug){ Debug.Log(collision.gameObject.name); }
 
         ENTITY collidedEntity = collision.gameObject.GetComponentInParent<ENTITY>();
-
         if (collidedEntity == null){ return; }
 
         if (collidedEntity.location == this ) collidedEntity.UpdateLocation(null);
@@ -78,6 +55,8 @@ public class ENVIRONMENT_Room : MonoBehaviour
         if (newOccupant == null){ return; }
 
         if (!occupants.Contains(newOccupant)) occupants.Add(newOccupant);
+
+        if (debug){ Debug.Log("New Occupant in Room: " + newOccupant.name); }
     }
 
 
