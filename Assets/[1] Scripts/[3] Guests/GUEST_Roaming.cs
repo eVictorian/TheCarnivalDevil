@@ -24,6 +24,8 @@ public class GUEST_Roaming : MonoBehaviour
     [SerializeField, ReadOnly] private RoamBehaviour currentBehaviour;
     [SerializeField, ReadOnly] private Waypoint currentRoamingPoint;
 
+    [SerializeField] NPCAudioManager AudioManager;
+
     private Coroutine waitingAtRoamPointCoroutineInstance;
 
     void Awake(){ Setup(); }
@@ -49,6 +51,7 @@ public class GUEST_Roaming : MonoBehaviour
     public void Stop(){ StopMoving(); }
     void StopMoving()
     {
+        AudioManager.EndWalk();
         if (waitingAtRoamPointCoroutineInstance != null){ StopCoroutine(waitingAtRoamPointCoroutineInstance); }
 
         if (nmAgent.isActiveAndEnabled){ nmAgent.SetDestination(transform.position); }
@@ -64,6 +67,7 @@ public class GUEST_Roaming : MonoBehaviour
         nmAgent.SetDestination(currentRoamingPoint.transform.position); 
         
         currentBehaviour = RoamBehaviour.Travelling;
+        AudioManager.StartWalk();
     }
 
     void ReachedRoamPointCheck(){ if (ReachedDestination()){ waitingAtRoamPointCoroutineInstance = StartCoroutine(WaitingAtRoamPointCoroutine()); }}
