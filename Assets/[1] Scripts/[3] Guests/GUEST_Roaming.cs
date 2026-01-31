@@ -48,7 +48,7 @@ public class GUEST_Roaming : MonoBehaviour
     {
         if (waitingAtRoamPointCoroutineInstance != null){ StopCoroutine(waitingAtRoamPointCoroutineInstance); }
 
-        nmAgent.SetDestination(transform.position);
+        if (nmAgent.isActiveAndEnabled){ nmAgent.SetDestination(transform.position); }
         currentBehaviour = RoamBehaviour.Stopped;
     }
 
@@ -97,6 +97,12 @@ public class GUEST_Roaming : MonoBehaviour
         StartMoving();
 
         waitingAtRoamPointCoroutineInstance = null;
+    }
+
+    void OnDestroy()
+    {
+        blackoutStarted.UnregisterListener(StopMoving);
+        blackoutEnded.UnregisterListener(StartMoving);
     }
 }
 
