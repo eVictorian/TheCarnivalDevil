@@ -49,8 +49,6 @@ public class UX_GuessedWrong : MonoBehaviour
 
     public void PlayJumpscare(bool exterior = true)
     {
-        ENVIRONMENT_Blackouts.PauseTimer();
-
         if (exterior)
         {
             creature.localPosition = creaturePositions[counter = creaturePositions.Count - 1];
@@ -65,8 +63,10 @@ public class UX_GuessedWrong : MonoBehaviour
 
     void sendToStartScreen()
     {
-        Debug.Log("EndScreenStart");
-        SceneManager.LoadScene("start");
+        //Debug.Log("EndScreenStart");
+        //SceneManager.LoadScene("start");
+
+        Application.Quit(); //TEMP FIX FOR UNITYS SCENE LOADING BULLSHIT
     }
 
     void EnableSceneCams(){ ChangeCamListActiveStates(sceneCameras, true); }

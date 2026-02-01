@@ -81,7 +81,7 @@ public class GUEST_Mask : MonoBehaviour
             MaskUp();
         }
     }
-    [Button] void MaskUp(){ if (isBusy){ return; } GetComponentInParent<NPCAudioManager>().Unmask(); face.SetActive(true); activeCoroutine = StartCoroutine(MaskUpCoroutine()); }
+    [Button] void MaskUp(){ if (isBusy){ return; } GetComponentInParent<NPCAudioManager>().Unmask(); if (face != null){ face.SetActive(true); } activeCoroutine = StartCoroutine(MaskUpCoroutine()); }
     private IEnumerator MaskUpCoroutine()
     {
         ENVIRONMENT_Blackouts.PauseTimer();

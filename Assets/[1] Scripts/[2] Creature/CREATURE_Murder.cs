@@ -52,7 +52,7 @@ public class CREATURE_Murder : MonoBehaviour
         return true;
     }
 
-    void KillPlayer(ENTITY_Player player){ player.Die(); }
+    void KillPlayer(ENTITY_Player player){ ENVIRONMENT_Blackouts.PauseTimer(); player.Die(); }
 
     void KillGuest(ENTITY_Guest guest){ guest.Die(); }
 }
