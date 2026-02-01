@@ -56,11 +56,14 @@ namespace Unity.FPS.UI
             LookSensitivitySlider.value = m_PlayerInputsHandler.LookSensitivity;
             LookSensitivitySlider.onValueChanged.AddListener(OnMouseSensitivityChanged);
 
-            ShadowsToggle.isOn = QualitySettings.shadows != ShadowQuality.Disable;
-            ShadowsToggle.onValueChanged.AddListener(OnShadowsChanged);
-
-            InvincibilityToggle.isOn = m_PlayerHealth.Invincible;
-            InvincibilityToggle.onValueChanged.AddListener(OnInvincibilityChanged);
+            if (ShadowsToggle != null){
+                ShadowsToggle.isOn = QualitySettings.shadows != ShadowQuality.Disable;
+                ShadowsToggle.onValueChanged.AddListener(OnShadowsChanged);
+            }
+            if (InvincibilityToggle != null){
+                InvincibilityToggle.isOn = m_PlayerHealth.Invincible;
+                InvincibilityToggle.onValueChanged.AddListener(OnInvincibilityChanged);
+            }
 
             FramerateToggle.isOn = m_FramerateCounter.UIText.gameObject.activeSelf;
             FramerateToggle.onValueChanged.AddListener(OnFramerateCounterChanged);

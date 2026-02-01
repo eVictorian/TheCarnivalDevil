@@ -49,7 +49,7 @@ public class UX_GuessedWrong : MonoBehaviour
 
     public void PlayJumscare(bool exterior = true)
     {
-        if (!exterior)
+        if (exterior)
         {
             creature.localPosition = creaturePositions[counter = creaturePositions.Count - 1];
             EnableSceneCams();

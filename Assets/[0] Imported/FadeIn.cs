@@ -15,8 +15,8 @@ public class FadeIn : MonoBehaviour
 
     void Awake()
     {
-        fadeInTrigger.RegisterListener(FadeInFully);
-        fadeOutTrigger.RegisterListener(FadeOutFully);
+        if (fadeInTrigger != null) fadeInTrigger.RegisterListener(FadeInFully);
+        if (fadeOutTrigger != null) fadeOutTrigger.RegisterListener(FadeOutFully);
     }
 
     [Button] public void FadeInFully()

@@ -15,7 +15,7 @@ public class CREATURE_Murder : MonoBehaviour
     {
         ENVIRONMENT_Room myRoom = GetComponentInChildren<ENTITY_Creature>().location;
 
-        if (myRoom == null){ Debug.Log("Creature not in a Room!"); return; }
+        if (myRoom == null){ return; } ///Debug.Log("Creature not in a Room!");
 
         List<ENTITY> roomOccupants = new List<ENTITY>(myRoom.GetOccupants());
 
