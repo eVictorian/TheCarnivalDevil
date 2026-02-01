@@ -38,6 +38,7 @@ public class GUEST_Mask : MonoBehaviour
     [SerializeField] private Transform maskParent;
     [SerializeField] private GameObject mask;
     [SerializeField] private ENTITY entity;
+    [SerializeField] private GameObject face;
 
     private static Coroutine activeCoroutine;
 
@@ -80,7 +81,7 @@ public class GUEST_Mask : MonoBehaviour
             MaskUp();
         }
     }
-    [Button] void MaskUp(){ if (isBusy){ return; } GetComponentInParent<NPCAudioManager>().Unmask(); activeCoroutine = StartCoroutine(MaskUpCoroutine()); }
+    [Button] void MaskUp(){ if (isBusy){ return; } GetComponentInParent<NPCAudioManager>().Unmask(); face.SetActive(true); activeCoroutine = StartCoroutine(MaskUpCoroutine()); }
     private IEnumerator MaskUpCoroutine()
     {
         ENVIRONMENT_Blackouts.PauseTimer();
@@ -131,6 +132,7 @@ public class GUEST_Mask : MonoBehaviour
             if (debug){ Debug.Log("over: " + transitionDuration); }
 
         GetComponentInParent<NPCAudioManager>().Unmask();
+        face.SetActive(false);
         while (timer < transitionDuration)
         {
             timer += Time.deltaTime;
