@@ -1,7 +1,8 @@
-using UnityEngine;
+using NaughtyAttributes;
 using System.Collections;
 using System.Collections.Generic;
-using NaughtyAttributes;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UX_GuessedWrong : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class UX_GuessedWrong : MonoBehaviour
         {
             //Death stuff
             jumpScare.Play();
+            Invoke("sendToStartScreen", jumpScare.clip.length);
         }
         else
         {
@@ -45,6 +47,12 @@ public class UX_GuessedWrong : MonoBehaviour
             EnableGameCams();
             DisableSceneCams();
         }
+    }
+
+    void sendToStartScreen()
+    {
+        Debug.Log("EndScreenStart");
+        SceneManager.LoadScene("start");
     }
 
     void EnableSceneCams(){ ChangeCamListActiveStates(sceneCameras, true); }
