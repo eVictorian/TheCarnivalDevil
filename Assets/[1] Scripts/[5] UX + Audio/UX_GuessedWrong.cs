@@ -30,9 +30,7 @@ public class UX_GuessedWrong : MonoBehaviour
 
         if (counter >= creaturePositions.Count - 1)
         {
-            //Death stuff
-            jumpScare.Play();
-            Invoke("sendToStartScreen", jumpScare.clip.length);
+            PlayJumscare(false);
         }
         else
         {
@@ -47,6 +45,20 @@ public class UX_GuessedWrong : MonoBehaviour
             EnableGameCams();
             DisableSceneCams();
         }
+    }
+
+    public void PlayJumscare(bool exterior = true)
+    {
+        if (!exterior)
+        {
+            creature.localPosition = creaturePositions[counter = creaturePositions.Count - 1];
+            EnableSceneCams();
+            DisableGameCams();
+        }
+
+        //Death stuff
+        jumpScare.Play();
+        Invoke("sendToStartScreen", jumpScare.clip.length);
     }
 
     void sendToStartScreen()

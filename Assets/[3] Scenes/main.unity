@@ -5405,8 +5405,59 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 525967163}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5044898514797533954, guid: 41adda139c4a8eb4db582b03e02664d6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8334804873654709436}
   m_SourcePrefab: {fileID: 100100000, guid: 41adda139c4a8eb4db582b03e02664d6, type: 3}
+--- !u!1 &8334804873654709434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5044898514797533954, guid: 41adda139c4a8eb4db582b03e02664d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8334804873654709433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8334804873654709435 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6963195443618219328, guid: 41adda139c4a8eb4db582b03e02664d6,
+    type: 3}
+  m_PrefabInstance: {fileID: 8334804873654709433}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334804873654709434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f597ee207706b24eb1569748ca46ae4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8334804873654709436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334804873654709434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56cf3d4f322a6ee46a70a6cfc1b35691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8334804873654709435}
+        m_TargetAssemblyTypeName: UX_GuessedWrong, Assembly-CSharp
+        m_MethodName: PlayJumscare
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  trigger: {fileID: 11400000, guid: f29bb41a9d5ab7a4985f61867ac57413, type: 2}
+  delay: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
