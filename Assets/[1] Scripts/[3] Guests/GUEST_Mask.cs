@@ -33,7 +33,14 @@ public class GUEST_Mask : MonoBehaviour
 
     private static Coroutine activeCoroutine;
 
-    public void UnMask(){ if (interactable) MaskUp(); }
+    public void UnMask()
+    {
+        if (interactable)
+        {
+            MaskUp();
+            GetComponentInParent<NPCAudioManager>().Unmask();
+        }
+    }
     [Button] void MaskUp(){ if (isBusy){ return; } activeCoroutine = StartCoroutine(MaskUpCoroutine()); }
     private IEnumerator MaskUpCoroutine()
     {
