@@ -24,7 +24,8 @@ public class CREATURE_Murder : MonoBehaviour
         {
             if (entity is ENTITY_Creature){}
             if (entity is ENTITY_Guest){ KillGuest(entity as ENTITY_Guest); if (RULE_MURDER_OnlyOneKillPerCheck){ break; }}
-            if (entity is ENTITY_Player){ KillPlayer(entity as ENTITY_Player); if (RULE_MURDER_OnlyOneKillPerCheck){ break; }}
+            if (entity is ENTITY_Player){ KillPlayer(entity as ENTITY_Player); if (RULE_MURDER_OnlyOneKillPerCheck){ break; }
+            }
         }
     }
 

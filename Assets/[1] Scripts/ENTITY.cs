@@ -7,7 +7,9 @@ public class ENTITY : MonoBehaviour
 
     public ENVIRONMENT_Room location {private set; get;}
 
+    public soDATA_GameEvent onDeathRaise;
+
     public void UpdateLocation(ENVIRONMENT_Room newLocation){ location = newLocation; }
 
-    public void Die(){ onDeath.Invoke(); }
+    public void Die(){ onDeathRaise.Raise(); onDeath.Invoke();  }
 }
