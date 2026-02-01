@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -11,6 +13,10 @@ public class GUEST_Mask : MonoBehaviour
     [Space(10)]
 
     [SerializeField] private soDATA_GameEvent onMaskUpGameEvent;
+    [SerializeField] private soDATA_GUEST_Masks maskSelectionInput;
+    [SerializeField] private GameObject defaultMaskObjectInput;
+    private static List<GameObject> maskSelection;
+    private static GameObject defaultMaskObject;
 
     [Space(10)]
 
@@ -32,6 +38,34 @@ public class GUEST_Mask : MonoBehaviour
     [SerializeField] private ENTITY entity;
 
     private static Coroutine activeCoroutine;
+
+    void Awake()
+    {
+        if (maskSelection.Count == 0) maskSelection = new List<GameObject>(maskSelectionInput.masks);
+
+        if (defaultMaskObject == null) defaultMaskObject = defaultMaskObjectInput;
+    }
+
+    public static void SetupAllMasks()
+    {
+        if (maskSelection.Count < 1){ return; }
+
+        int[] randomizedMaskIndices = new int[maskSelection.Count];
+
+        int i = 0;
+        foreach (GameObject mask in maskSelection){ randomizedMaskIndices[Random.Range(0,maskSelection.Count)] = i; i++; }
+
+        int i2 = 0;
+        foreach (GUEST_Mask masked in FindObjectsByType<GUEST_Mask>(0))
+        {
+            if (i2 == randomizedMaskIndices.Count()){ break; }
+
+            masked.SetMask(maskSelection[randomizedMaskIndices[i2]]);
+            i2++;
+        }
+    }
+
+    public void SetMask(GameObject newMask){}
 
     public void UnMask()
     {

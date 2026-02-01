@@ -6,6 +6,7 @@ public class CREATURE_Murder : MonoBehaviour
     [SerializeField] private soDATA_GameEvent blackoutStartedGameEvent;
 
     static bool RULE_MURDER_OnlyOneKillPerCheck = true;
+    static int RULE_MURDER_PercentChanceToMurder = 75;
 
     void Awake(){ Setup(); }
     void Setup(){ blackoutStartedGameEvent.RegisterListener(OnBlackoutCheckForMurder); }
@@ -20,12 +21,14 @@ public class CREATURE_Murder : MonoBehaviour
 
         if (!QueryMurder(roomOccupants)){ return; }
         
-        foreach (ENTITY entity in roomOccupants)
+        foreach (ENTITY entity in roomOccupants) //Killing Guests takes Priority
         {
-            if (entity is ENTITY_Creature){}
-            if (entity is ENTITY_Guest){ KillGuest(entity as ENTITY_Guest); if (RULE_MURDER_OnlyOneKillPerCheck){ break; }}
-            if (entity is ENTITY_Player){ KillPlayer(entity as ENTITY_Player); if (RULE_MURDER_OnlyOneKillPerCheck){ break; }
-            }
+            if (entity is ENTITY_Guest){ KillGuest(entity as ENTITY_Guest); if (RULE_MURDER_OnlyOneKillPerCheck){ return; }}
+        }
+
+        foreach (ENTITY entity in roomOccupants) //Kill Player if no Guests
+        {
+            if (entity is ENTITY_Player){ KillPlayer(entity as ENTITY_Player); if (RULE_MURDER_OnlyOneKillPerCheck){ return; }}
         }
     }
 
@@ -35,8 +38,10 @@ public class CREATURE_Murder : MonoBehaviour
         {
             if (entity is ENTITY_Creature){}
             if (entity is ENTITY_Guest){}
-            if (entity is ENTITY_Player){ return false; }
+            if (entity is ENTITY_Player){}
         }
+
+        if (Random.Range(1,101) > RULE_MURDER_PercentChanceToMurder){ return false; }
 
         return true;
     }
