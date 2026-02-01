@@ -667,8 +667,8 @@ MonoBehaviour:
           m_StringArgument: win
           m_BoolArgument: 0
         m_CallState: 2
-  trigger: {fileID: 11400000, guid: 1e02b41185461a144a96e856ce3488f6, type: 2}
-  delay: 3
+  trigger: {fileID: 11400000, guid: 18dc8c00e8445584d9a32166e55614f1, type: 2}
+  delay: 5
 --- !u!4 &475767230
 Transform:
   m_ObjectHideFlags: 0
@@ -3832,6 +3832,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Creature] TheCreature [Root, NavMeshAgent]'
       objectReference: {fileID: 0}
+    - target: {fileID: 7775984156694642842, guid: 64d8cd2ed177f104fb2a4d7df617ec3e,
+        type: 3}
+      propertyPath: screamer
+      value: 
+      objectReference: {fileID: 1135568185}
     - target: {fileID: 8076059189414009111, guid: 64d8cd2ed177f104fb2a4d7df617ec3e,
         type: 3}
       propertyPath: m_LocalPosition.x

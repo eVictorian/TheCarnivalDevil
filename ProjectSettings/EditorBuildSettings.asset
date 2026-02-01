@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/[3] Scenes/start.unity
     guid: 277f0ec138266c34fa3d0a468d64c857
   - enabled: 1
+    path: Assets/[3] Scenes/prologue letter.unity
+    guid: 6a234d56c48c8cd4c81e46910bec9a28
+  - enabled: 1
     path: Assets/[3] Scenes/main.unity
     guid: 83680a2df85de824dac142cb7fcb9ab1
+  - enabled: 1
+    path: Assets/[3] Scenes/win.unity
+    guid: 991e850cd76b33848a06a0bf4bb0553f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 05b4aeda8533b704f9be24b556a43d98,
       type: 3}

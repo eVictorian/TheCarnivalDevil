@@ -14,7 +14,7 @@ public class EVENT_Converter : MonoBehaviour
         if (trigger != null) trigger.RegisterListener(Activate);
     }
 
-    void Activate(){ if (delay > 0){ TriggerDelay(); return; } effect.Invoke(); }
+    void Activate(){ if (delay > 0){ StartCoroutine(TriggerDelay()); return; } effect.Invoke(); }
 
     private IEnumerator TriggerDelay()
     {

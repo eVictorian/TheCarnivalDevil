@@ -2,5 +2,7 @@ using UnityEngine;
 
 public class ENTITY_Creature : ENTITY
 {
-    public void EnableCreatureScream(){ FindFirstObjectByType<CREATURE_Scream>().gameObject.SetActive(true); }
+    public CREATURE_Scream screamer;
+
+    public void EnableCreatureScream(){ screamer.gameObject.SetActive(true); }
 }
