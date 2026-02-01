@@ -3864,16 +3864,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5475516469095354287, guid: 41adda139c4a8eb4db582b03e02664d6,
-        type: 3}
-      propertyPath: effect.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PlayJumpscare
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963195443618219328, guid: 41adda139c4a8eb4db582b03e02664d6,
-        type: 3}
-      propertyPath: gameCameras.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 6963195443618219328, guid: 41adda139c4a8eb4db582b03e02664d6,
         type: 3}
       propertyPath: 'gameCameras.Array.data[0]'
@@ -3889,26 +3879,6 @@ PrefabInstance:
       propertyPath: 'gameCameras.Array.data[2]'
       value: 
       objectReference: {fileID: 997097625}
-    - target: {fileID: 6963195443618219328, guid: 41adda139c4a8eb4db582b03e02664d6,
-        type: 3}
-      propertyPath: 'gameCameras.Array.data[3]'
-      value: 
-      objectReference: {fileID: 1320075184}
-    - target: {fileID: 6963195443618219328, guid: 41adda139c4a8eb4db582b03e02664d6,
-        type: 3}
-      propertyPath: creaturePositions.Array.data[1].z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963195443618219328, guid: 41adda139c4a8eb4db582b03e02664d6,
-        type: 3}
-      propertyPath: creaturePositions.Array.data[2].z
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963195443618219328, guid: 41adda139c4a8eb4db582b03e02664d6,
-        type: 3}
-      propertyPath: creaturePositions.Array.data[3].z
-      value: -8
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

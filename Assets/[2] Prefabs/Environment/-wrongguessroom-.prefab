@@ -375,6 +375,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2535611129882096446}
   - {fileID: 6067918402286800442}
   - {fileID: 3086615806099549982}
   - {fileID: 9203319438143298609}
@@ -501,7 +502,7 @@ GameObject:
   - component: {fileID: 4395128125303842874}
   - component: {fileID: 8819843500511400798}
   m_Layer: 0
-  m_Name: Light
+  m_Name: '[BROKEN][TEMPFIX] Light'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,12 +516,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3547717969557043148}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000029802322, y: 0.7071072, z: -0.00000010430793, w: 0.7071065}
-  m_LocalPosition: {x: -0.44689324, y: -0.000000166893, z: 8.629163}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: 0.0000006258487, z: -0.7071069, w: 0.70710677}
+  m_LocalPosition: {x: 0.009984774, y: 1.4472656, z: -11.719126}
+  m_LocalScale: {x: 0.3994901, y: 10, z: 35.308495}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8675110017156679407}
+  m_Father: {fileID: 2379426408744455371}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!108 &4395128125303842874
 Light:
@@ -531,9 +532,9 @@ Light:
   m_GameObject: {fileID: 3547717969557043148}
   m_Enabled: 1
   serializedVersion: 11
-  m_Type: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Type: 1
+  m_Color: {r: 0.5471698, g: 0, b: 0, a: 1}
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -802,6 +803,7 @@ MonoBehaviour:
   gameCameras:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   creaturePositions:
   - {x: 0, y: 0, z: 5}
   - {x: 0, y: 0, z: 0}
@@ -823,6 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56cf3d4f322a6ee46a70a6cfc1b35691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   effect:
     m_PersistentCalls:
       m_Calls:
@@ -839,6 +842,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   trigger: {fileID: 11400000, guid: 36fe0f9bd40d1324d9fda24badc4cb32, type: 2}
+  enableDelay: 0
   delay: 0
 --- !u!114 &5475516469095354287
 MonoBehaviour:
@@ -852,12 +856,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56cf3d4f322a6ee46a70a6cfc1b35691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
   effect:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6963195443618219328}
         m_TargetAssemblyTypeName: UX_GuessedWrong, Assembly-CSharp
-        m_MethodName: PlayJumscare
+        m_MethodName: PlayJumpscare
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -868,6 +873,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   trigger: {fileID: 11400000, guid: f29bb41a9d5ab7a4985f61867ac57413, type: 2}
+  enableDelay: 0
   delay: 0
 --- !u!1 &5521257103849370243
 GameObject:
@@ -1014,7 +1020,6 @@ Transform:
   - {fileID: 2406864582068388627}
   - {fileID: 6731993632155424805}
   - {fileID: 1142924440744234763}
-  - {fileID: 2535611129882096446}
   m_Father: {fileID: 2379426408744455371}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -90}
 --- !u!33 &2925518315908689687
