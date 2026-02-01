@@ -49,6 +49,8 @@ public class UX_GuessedWrong : MonoBehaviour
 
     public void PlayJumscare(bool exterior = true)
     {
+        ENVIRONMENT_Blackouts.PauseTimer();
+
         if (exterior)
         {
             creature.localPosition = creaturePositions[counter = creaturePositions.Count - 1];

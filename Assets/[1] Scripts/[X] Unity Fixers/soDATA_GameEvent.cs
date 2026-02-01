@@ -5,12 +5,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "[GameEvent] New", menuName = "++GAMEEVENT")]
 public class soDATA_GameEvent : ScriptableObject
 {
+    private static bool debug = true;
+
     public GameObject raiseSource;
 
     private event Action listeners;
 
     public void Raise(GameObject source = null)
     {
+        if (debug){ Debug.Log(name +" Event was Raised!"); }
+
         raiseSource = source;
 
         listeners?.Invoke();

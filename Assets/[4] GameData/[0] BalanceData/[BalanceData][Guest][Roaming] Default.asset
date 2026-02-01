@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b6035402252df4b8fb2f810c3ddfeb, type: 3}
   m_Name: '[BalanceData][Guest][Roaming] Default'
   m_EditorClassIdentifier: 
-  RULE_WaitTimeRange: {x: 0, y: 10}
+  RULE_WaitTimeRange: {x: 1, y: 25}

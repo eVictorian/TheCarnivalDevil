@@ -11,5 +11,5 @@ public class ENTITY : MonoBehaviour
 
     public void UpdateLocation(ENVIRONMENT_Room newLocation){ location = newLocation; }
 
-    public void Die(){ onDeathRaise.Raise(); onDeath.Invoke();  }
+    public void Die(){ if (onDeathRaise != null){ onDeathRaise.Raise(); } onDeath.Invoke();  }
 }

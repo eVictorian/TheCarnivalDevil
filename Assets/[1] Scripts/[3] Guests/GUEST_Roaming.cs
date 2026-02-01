@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class GUEST_Roaming : MonoBehaviour
 {
     public bool debug = false;
+    bool readyForSpawn = false;
     public bool addAllWaypointsOnAwake = true;
 
     [SerializeField] private NavMeshAgent nmAgent;
@@ -40,8 +41,35 @@ public class GUEST_Roaming : MonoBehaviour
         blackoutStarted.RegisterListener(StopMoving);
         blackoutEnded.RegisterListener(BlackoutResumeMoving);
 
-        ChooseNextRoamPoint();
-        StartMoving();
+        readyForSpawn = true;
+
+        bool allReady = true;
+
+        foreach (GUEST_Roaming guest in FindObjectsByType<GUEST_Roaming>(0))
+        {
+            if (!guest.readyForSpawn){ allReady = false; }
+        }
+
+        if (allReady){ AddAllWaypointsToList(); RandomizeStartingPositionsOfAllGuests(new List<Waypoint>(waypoints)); }
+    }
+
+    static void RandomizeStartingPositionsOfAllGuests(List<Waypoint> spawnPoints)
+    {
+        List<Waypoint> randomizedSpawnPoints = new List<Waypoint>(spawnPoints);
+        Shuffle(randomizedSpawnPoints);
+
+        int i = 0;
+        foreach (GUEST_Roaming guest in FindObjectsByType<GUEST_Roaming>(0))
+        {
+            Vector3 newPosition = randomizedSpawnPoints[i].transform.position;
+            newPosition.y = guest.gameObject.transform.localPosition.y;
+            guest.gameObject.transform.localPosition = newPosition;
+
+            guest.ChooseNextRoamPoint();
+            guest.StartMoving();
+
+            i++;
+        }
     }
 
     void WaitAtRoamPoint(){}
@@ -119,6 +147,15 @@ public class GUEST_Roaming : MonoBehaviour
     {
         blackoutStarted.UnregisterListener(StopMoving);
         blackoutEnded.UnregisterListener(BlackoutResumeMoving);
+    }
+
+    static void Shuffle(List<Waypoint> waypoints)
+    {
+        for (int i = waypoints.Count - 1; i > 0; i--)
+        {
+            int j = UnityEngine.Random.Range(0, i + 1);
+            (waypoints[i], waypoints[j]) = (waypoints[j], waypoints[i]);
+        }
     }
 }
 

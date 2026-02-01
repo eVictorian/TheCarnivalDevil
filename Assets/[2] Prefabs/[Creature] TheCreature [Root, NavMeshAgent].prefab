@@ -159,6 +159,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 738972348262793170, guid: 73edb3d8d42cec7488580960a85bb11f,
         type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 738972348262793170, guid: 73edb3d8d42cec7488580960a85bb11f,
+        type: 3}
       propertyPath: m_Name
       value: '[Creature] TheCreature [Root, NavMeshAgent]'
       objectReference: {fileID: 0}

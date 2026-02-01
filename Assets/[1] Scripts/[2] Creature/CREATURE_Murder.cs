@@ -20,10 +20,16 @@ public class CREATURE_Murder : MonoBehaviour
         List<ENTITY> roomOccupants = new List<ENTITY>(myRoom.GetOccupants());
 
         if (!QueryMurder(roomOccupants)){ return; }
+
+        bool playerPresent = false;
+        foreach (ENTITY entity in roomOccupants) //Killing Guests takes Priority
+        {
+            if (entity is ENTITY_Player){ playerPresent = true; }
+        }
         
         foreach (ENTITY entity in roomOccupants) //Killing Guests takes Priority
         {
-            if (entity is ENTITY_Guest){ KillGuest(entity as ENTITY_Guest); if (RULE_MURDER_OnlyOneKillPerCheck){ return; }}
+            if (entity is ENTITY_Guest){ if (playerPresent){ return; } KillGuest(entity as ENTITY_Guest); if (RULE_MURDER_OnlyOneKillPerCheck){ return; }}
         }
 
         foreach (ENTITY entity in roomOccupants) //Kill Player if no Guests
