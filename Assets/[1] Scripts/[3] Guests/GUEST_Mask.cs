@@ -38,10 +38,9 @@ public class GUEST_Mask : MonoBehaviour
         if (interactable)
         {
             MaskUp();
-            GetComponentInParent<NPCAudioManager>().Unmask();
         }
     }
-    [Button] void MaskUp(){ if (isBusy){ return; } activeCoroutine = StartCoroutine(MaskUpCoroutine()); }
+    [Button] void MaskUp(){ if (isBusy){ return; } GetComponentInParent<NPCAudioManager>().Unmask(); activeCoroutine = StartCoroutine(MaskUpCoroutine()); }
     private IEnumerator MaskUpCoroutine()
     {
         ENVIRONMENT_Blackouts.PauseTimer();
@@ -91,6 +90,7 @@ public class GUEST_Mask : MonoBehaviour
             if (debug){ Debug.Log("to B" + pivotRotationMaskDown); }
             if (debug){ Debug.Log("over: " + transitionDuration); }
 
+        GetComponentInParent<NPCAudioManager>().Unmask();
         while (timer < transitionDuration)
         {
             timer += Time.deltaTime;
