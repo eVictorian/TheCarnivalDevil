@@ -30,7 +30,7 @@ public class UX_GuessedWrong : MonoBehaviour
 
         if (counter >= creaturePositions.Count - 1)
         {
-            PlayJumscare(false);
+            PlayJumpscare(false);
         }
         else
         {
@@ -47,7 +47,7 @@ public class UX_GuessedWrong : MonoBehaviour
         }
     }
 
-    public void PlayJumscare(bool exterior = true)
+    public void PlayJumpscare(bool exterior = true)
     {
         ENVIRONMENT_Blackouts.PauseTimer();
 
