@@ -13,23 +13,38 @@ public class UX_GuessedWrong : MonoBehaviour
     public int counter = 0;
     public float sceneLength;
 
+    [SerializeField] AudioSource jumpScare;
+
     [SerializeField] Transform creature;
 
     [Button] public void StartGuessedWrongScene(){ StartCoroutine(GuessedWrongCoroutine()); }
 
     private IEnumerator GuessedWrongCoroutine()
     {
-            if (counter > creaturePositions.Count-1){ counter = 0; }
+        Debug.Log(creaturePositions[counter]);
+      
         creature.localPosition = creaturePositions[counter];
-        counter++;
-
         EnableSceneCams();
         DisableGameCams();
 
-        yield return new WaitForSeconds(sceneLength);
+        if (counter >= creaturePositions.Count - 1)
+        {
+            //Death stuff
+            jumpScare.Play();
+        }
+        else
+        {
+            if (counter >= creaturePositions.Count-2)
+            {
+                GameObject.FindWithTag("HeartBeatAudio").GetComponent<AudioSource>().Play();
+            }
+            counter++;
 
-        EnableGameCams();
-        DisableSceneCams();
+            yield return new WaitForSeconds(sceneLength);
+
+            EnableGameCams();
+            DisableSceneCams();
+        }
     }
 
     void EnableSceneCams(){ ChangeCamListActiveStates(sceneCameras, true); }
