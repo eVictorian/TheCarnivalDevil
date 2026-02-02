@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class PLAYER_Unmasker : MonoBehaviour
 {
-    [SerializeField, Range(0.1f,5)] private float maxUnmaskingDistance = 0.1f;
+    [SerializeField, Range(0.1f,10)] private float maxUnmaskingDistance = 0.1f;
 
     [Space(10)]
 
